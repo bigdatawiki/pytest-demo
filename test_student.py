@@ -1,10 +1,22 @@
 from student import StudentDB
 import pytest
 
+db = None
 
-def test_scott_data():
+
+def setup_module(module):
+    print("Inside setup_module function")
+    global db
     db = StudentDB()
     db.connect('data.json')
+
+
+def teardown_module(module):
+    print("Inside teardown_module function")
+    db.close()
+
+
+def test_scott_data():
     scott_data = db.get_data('Scott')
     assert scott_data['id'] == 1
     assert scott_data['name'] == 'Scott'
@@ -12,8 +24,6 @@ def test_scott_data():
 
 
 def test_mark_data():
-    db = StudentDB()
-    db.connect('data.json')
     mark_data = db.get_data('Mark')
     assert mark_data['id'] == 2
     assert mark_data['name'] == 'Mark'
