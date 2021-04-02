@@ -7,14 +7,9 @@ def db():
     print("Inside db function")
     stud_db = StudentDB()
     stud_db.connect('data.json')
-    return stud_db
-
-
-'''
-def teardown_module(module):
-    print("Inside teardown_module function")
-    db.close()
-'''
+    yield stud_db
+    print(" --- Teardown code ---")
+    stud_db.close()
 
 
 def test_scott_data(db):
