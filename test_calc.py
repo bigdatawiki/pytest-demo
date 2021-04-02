@@ -1,12 +1,14 @@
 import calc
+import pytest
 
 
 def test_add():
-    pass
-    assert calc.add(1, 2) == 3
-    assert calc.add(2) == 12
+    assert calc.add(7, 3) == 10
 
 
-def test_product():
-    assert calc.product(2, 3) == 6
-    assert calc.product(5, 2) == 10
+def test_add_strings():
+    assert calc.add("Hello ", "World") == "Hello World"
+
+
+def test_add_float():
+    assert calc.add(12.5, 12.5) == 25
