@@ -2,7 +2,7 @@ from student import StudentDB
 import pytest
 
 
-@pytest.fixture
+@pytest.fixture(scope='module')
 def db():
     print("Inside db function")
     stud_db = StudentDB()
