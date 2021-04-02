@@ -2,13 +2,10 @@ import calc
 import pytest
 
 
-def test_add():
-    assert calc.add(7, 3) == 10
-
-
-def test_add_strings():
-    assert calc.add("Hello ", "World") == "Hello World"
-
-
-def test_add_float():
-    assert calc.add(12.5, 12.5) == 25
+@pytest.mark.parametrize('num1, num2, output',[
+    (7, 3, 10),
+    ("Hello ", "World", "Hello World"),
+    (12.5, 12.5, 25)
+])
+def test_add(num1, num2, output):
+    assert calc.add(num1, num2) == output
